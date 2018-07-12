@@ -42,6 +42,19 @@ module.exports = {
 					}
 				]
 			},
+			{
+				oneOf: [
+					{
+						test: /\.js$/,
+						loader: 'babel-loader',
+						exclude: /node_modules/,
+						options: {
+							babelrc: true,
+							cacheDirectory: true,
+						}
+					},
+				],
+			},
 		],
 	},
 }

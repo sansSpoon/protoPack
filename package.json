@@ -28,6 +28,10 @@
 	"author": "sansSpoon",
 	"license": "ISC",
 	"devDependencies": {
+		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.5",
+		"babel-preset-airbnb": "^2.5.1",
+		"babel-preset-env": "^1.7.0",
 		"eslint": "^4.19.1",
 		"eslint-config-airbnb-base": "^13.0.0",
 		"eslint-loader": "^2.0.0",
