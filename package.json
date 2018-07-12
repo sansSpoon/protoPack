@@ -1,0 +1,21 @@
+{
+	"name": "protoPack",
+	"version": "0.1.0",
+	"description": "A basic boiler for Webpack enabled projects - vanilla front-end",
+	"main": "index.js",
+	"private": true,
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": ["webpack","sass","stylelint","babel","eslint","boilerplate"],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sansSpoon/protoPack.git"
+	},
+	"homepage": "https://github.com/sansspoon/protoPack#readme",
+	"bugs": {
+		"url": "https://github.com/sansspoon/protoPack/issues"
+	},
+	"author": "sansSpoon",
+	"license": "ISC",
+}
