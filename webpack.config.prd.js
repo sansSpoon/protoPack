@@ -17,4 +17,39 @@ module.exports = {
 		path: path.resolve(__dirname, 'public'),
 		publicPath: publicPath,
 	},
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				enforce: 'pre',
+				use: [
+					{
+						loader: 'eslint-loader',
+						options: {
+							fix: false,
+							cache: false, // true './node_modules/.cache'
+							quiet: false, // Loader will process and report errors only and ignore warnings if this option is set to true
+							emitWarning: false, // Enable for HMR in dev
+							failOnWarning: false,
+							emitError: true,
+							failOnError: false,
+						},
+					}
+				]
+			},
+			{
+				oneOf: [
+					{
+						test: /\.js$/,
+						loader: 'babel-loader',
+						exclude: /node_modules/,
+						options: {
+							babelrc: true,
+							compact: true,
+						}
+					},
+				],
+			},
+		],
+	},
 }

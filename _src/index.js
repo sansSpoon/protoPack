@@ -1,4 +1,5 @@
-import project from './project.js';
+import { hello, world } from './project';
+
 export default function () {
-  console.log(project);
+	console.log(`${hello} ${world}`); // eslint-disable-line
 }

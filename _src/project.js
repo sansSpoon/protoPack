@@ -1,1 +1,2 @@
-export default 'hello world!';
+export const hello = 'Hello';
+export const world = 'World!';
