@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 // Set dev because webpack has too many cooks
 process.env.NODE_ENV = 'production';
@@ -16,6 +17,32 @@ module.exports = {
 		filename: 'assets/js/[name].js',
 		path: path.resolve(__dirname, 'public'),
 		publicPath: publicPath,
+	},
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+				sourceMap: true,
+				extractComments: true,
+				uglifyOptions: {
+					ecma: 8,
+					warnings: false,
+					safari10: true,
+					parse: {},
+					compress: {},
+					mangle: {
+						safari10: true,
+					},
+					output: {
+						comments: false,
+						beautify: false,
+					},
+					sourceMap: {},
+				},
+			})
+		],
+		splitChunks: {
+			chunks: 'all',
+		}
 	},
 	module: {
 		rules: [
