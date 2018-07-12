@@ -6,7 +6,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "webpack --config webpack.config.dev.js --mode development",
-		"prd": "webpack --config webpack.config.prd.js --mode production"
+		"prd": "webpack --config webpack.config.prd.js --mode production",
+		"start": "webpack-dev-server --config webpack.config.dev.js --open"
 	},
 	"keywords": [
 		"webpack",

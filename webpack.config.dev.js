@@ -18,4 +18,8 @@ module.exports = {
 		path: path.resolve(__dirname, '_build'),
 		publicPath: publicPath,
 	},
+	devServer: {
+		contentBase: path.join(__dirname, '_build/_static'),
+		// hot: true,
+	},
 }
