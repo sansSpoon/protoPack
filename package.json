@@ -5,9 +5,17 @@
 	"main": "index.js",
 	"private": true,
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"dev": "webpack --config webpack.config.dev.js --mode development",
+		"prd": "webpack --config webpack.config.prd.js --mode production"
 	},
-	"keywords": ["webpack","sass","stylelint","babel","eslint","boilerplate"],
+	"keywords": [
+		"webpack",
+		"sass",
+		"stylelint",
+		"babel",
+		"eslint",
+		"boilerplate"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/sansSpoon/protoPack.git"
@@ -18,4 +26,9 @@
 	},
 	"author": "sansSpoon",
 	"license": "ISC",
+	"devDependencies": {
+		"webpack": "^4.16.0",
+		"webpack-cli": "^3.0.8",
+		"webpack-dev-server": "^3.1.4"
+	}
 }
