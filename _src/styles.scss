@@ -1,11 +1,11 @@
 @import 'variables.scss';
 
 .hello {
+	display: flex;
+
 	font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1, 'swsh' 1;
 
 	color: $wp-orange;
-	
-	display: flex;
 
 	// background: url('./pic.jpg');
 }

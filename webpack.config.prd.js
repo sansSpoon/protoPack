@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
@@ -7,7 +9,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 process.env.NODE_ENV = 'production';
 
 // Set a global public path, used for sub-domains
-const publicPath = '';
+const publicPath = '/';
 
 module.exports = {
 	devtool: 'source-map',
@@ -107,14 +109,51 @@ module.exports = {
 							}
 						],
 					},
+					{
+						test: /\.(png|svg|jpg|gif)$/,
+						use: [
+							{
+								loader: 'url-loader',
+								options: {
+									name: 'assets/chrome/[name].[ext]',
+									limit: 1024, // 8192
+									// fallback: 'responsive-loader',
+								},
+							},
+						]
+					},
+					{
+						loader: require.resolve('file-loader'),
+						exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+						options: {
+							name: 'assets/media/[name].[ext]',
+						}
+					}
 				],
 			},
 		],
 	},
 	plugins: [
+		new CleanWebpackPlugin(['public']),
 		new MiniCssExtractPlugin({
 			filename: "assets/css/[name].css",
-			chunkFilename: "[id].css"
+			chunkFilename: "[id].css",
+		}),
+		new HtmlWebpackPlugin({
+			inject: true,
+			template: path.resolve(__dirname, '_build/_static/index.html'),
+			minify: {
+				removeComments: true,
+				collapseWhitespace: true,
+				removeRedundantAttributes: true,
+				useShortDoctype: true,
+				removeEmptyAttributes: true,
+				removeStyleLinkTypeAttributes: true,
+				keepClosingSlash: true,
+				minifyJS: true,
+				minifyCSS: true,
+				minifyURLs: true,
+			},
 		}),
 	],
 }

@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 // Set dev because webpack has too many cooks
@@ -85,11 +86,35 @@ module.exports = {
 							}
 						],
 					},
+					{
+						test: /\.(png|svg|jpg|gif)$/,
+						use: [
+							{
+								loader: 'url-loader',
+								options: {
+									name: 'assets/chrome/[name].[ext]',
+									limit: 1024, // 8192
+									// fallback: 'responsive-loader',
+								},
+							},
+						]
+					},
+					{
+						loader: require.resolve('file-loader'),
+						exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+						options: {
+							name: 'assets/media/[name].[ext]',
+						}
+					}
 				],
 			},
 		],
 	},
 	plugins: [
+		new HtmlWebpackPlugin({
+			inject: true,
+			template: path.resolve(__dirname, '_build/_static/index.html'),
+		}),
 		new StyleLintPlugin({
 			configFile: './.stylelintrc.json',
 			context: '_src',
