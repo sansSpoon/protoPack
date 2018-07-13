@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 // Set dev because webpack has too many cooks
@@ -90,6 +91,10 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new HtmlWebpackPlugin({
+			inject: true,
+			template: path.resolve(__dirname, '_build/_static/index.html'),
+		}),
 		new StyleLintPlugin({
 			configFile: './.stylelintrc.json',
 			context: '_src',
