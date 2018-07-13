@@ -9,7 +9,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 process.env.NODE_ENV = 'production';
 
 // Set a global public path, used for sub-domains
-const publicPath = '';
+const publicPath = '/';
 
 module.exports = {
 	devtool: 'source-map',
