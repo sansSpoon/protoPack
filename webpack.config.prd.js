@@ -5,10 +5,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-// Set dev because webpack has too many cooks
+// Set NODE_ENV because webpack has too many cooks
 process.env.NODE_ENV = 'production';
 
-// Set a global public path, used for sub-domains
+// Set a global public path, used for setting site root
 const publicPath = '/';
 
 module.exports = {
@@ -58,7 +58,7 @@ module.exports = {
 						options: {
 							fix: false,
 							cache: false, // true './node_modules/.cache'
-							quiet: false, // Loader will process and report errors only and ignore warnings if this option is set to true
+							quiet: false, // report errors only, ignore warnings
 							emitWarning: false, // Enable for HMR in dev
 							failOnWarning: false,
 							emitError: true,
@@ -68,6 +68,8 @@ module.exports = {
 				]
 			},
 			{
+				// Using oneOf array (as per create-react-app) to handle
+				// fallback to file-loader for static assets
 				oneOf: [
 					{
 						test: /\.js$/,
@@ -123,6 +125,7 @@ module.exports = {
 						]
 					},
 					{
+						// If none of the above match, this will copy files to media
 						loader: require.resolve('file-loader'),
 						exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
 						options: {

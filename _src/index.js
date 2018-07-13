@@ -1,5 +1,4 @@
 import { hello, world } from './project';
-import './styles.scss';
 
 function greeting() {
 	const helloWorld = `${hello} ${world}`;

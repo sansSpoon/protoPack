@@ -3,10 +3,10 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
-// Set dev because webpack has too many cooks
+// Set NODE_ENV because webpack has too many cooks
 process.env.NODE_ENV = 'development';
 
-// Set a global public path, used for sub-domains
+// Set a global public path, used for setting site root
 const publicPath = '';
 
 module.exports = {
@@ -45,6 +45,8 @@ module.exports = {
 				]
 			},
 			{
+				// Using oneOf array (as per create-react-app) to handle
+				// fallback to file-loader for static assets
 				oneOf: [
 					{
 						test: /\.js$/,
@@ -100,6 +102,7 @@ module.exports = {
 						]
 					},
 					{
+						// If none of the above match, this will copy files to media
 						loader: require.resolve('file-loader'),
 						exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
 						options: {
