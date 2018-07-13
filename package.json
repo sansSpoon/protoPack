@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"private": true,
 	"scripts": {
-		"dev": "webpack --config webpack.config.dev.js --mode development",
+		"dev": "webpack --config webpack.config.dev.js --mode development --watch",
 		"prd": "webpack --config webpack.config.prd.js --mode production",
 		"start": "webpack-dev-server --config webpack.config.dev.js --open"
 	},
