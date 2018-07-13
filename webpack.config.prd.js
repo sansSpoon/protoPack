@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -133,6 +134,7 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new CleanWebpackPlugin(['public']),
 		new MiniCssExtractPlugin({
 			filename: "assets/css/[name].css",
 			chunkFilename: "[id].css",
