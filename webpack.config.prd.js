@@ -108,6 +108,26 @@ module.exports = {
 							}
 						],
 					},
+					{
+						test: /\.(png|svg|jpg|gif)$/,
+						use: [
+							{
+								loader: 'url-loader',
+								options: {
+									name: 'assets/chrome/[name].[ext]',
+									limit: 1024, // 8192
+									// fallback: 'responsive-loader',
+								},
+							},
+						]
+					},
+					{
+						loader: require.resolve('file-loader'),
+						exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+						options: {
+							name: 'assets/media/[name].[ext]',
+						}
+					}
 				],
 			},
 		],
