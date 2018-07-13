@@ -1,0 +1,36 @@
+{
+	"root": true,
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"extends": ["eslint:recommended", "airbnb-base"],
+	"parserOptions": {
+		"ecmaVersion": 2018,
+		"sourceType": "module"
+	},
+	"rules": {
+		"linebreak-style": ["error", "unix"],
+		
+		//ES6
+		"arrow-parens": ["error", "always"],
+		
+		//Style
+		"indent": ["error", "tab", { "MemberExpression": 1 }],
+		"quotes": ["error", "single"],
+		"semi": ["error", "always"],
+		"padded-blocks": "off",
+		"max-len": "off",
+		"no-underscore-dangle": "off",
+		"no-tabs": "off",
+		"no-multiple-empty-lines": ["error", { "max": 5, "maxEOF": 0 }],
+		
+		//Best Practice
+		"consistent-return": "off",
+		"no-return-assign": ["error", "except-parens"],
+		
+		//imports
+		"global-require": "off",
+		"import/no-dynamic-require": "off"
+	}
+}

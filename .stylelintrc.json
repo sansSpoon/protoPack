@@ -1,0 +1,73 @@
+{
+	"plugins": [
+		"stylelint-order"
+	],
+	"extends": "stylelint-config-standard",
+	"rules": {
+		"order/order": [
+			"custom-properties", "dollar-variables", "declarations", "rules", "at-rules"
+		],
+		"order/properties-order": [
+			{
+				"emptyLineBefore": "always",
+				"properties": [
+					"position",
+					"z-index",
+					"top",
+					"right",
+					"bottom",
+					"left",
+					"box-sizing"
+				]
+			},
+			{
+				"emptyLineBefore": "always",
+				"properties": [
+					"display","flex","flex-align","flex-basis","flex-direction","flex-wrap","flex-flow","flex-grow","flex-order","flex-pack","align-content","align-items","align-self","justify-content","order","float","overflow","overflow-x","overflow-y","-webkit-overflow-scrolling","clip","clear"
+				]
+			},
+			{
+				"emptyLineBefore": "always",
+				"properties": [
+					"width","min-width","max-width","height","min-height","max-height","padding","padding-top","padding-right","padding-bottom","padding-left","margin","margin-top","margin-right","margin-bottom","margin-left"
+				]
+			},
+			{
+				"emptyLineBefore": "always",
+				"properties": [
+					"font","font-family","font-size","line-height","font-style","font-weight","font-variant","font-size-adjust","font-stretch","font-effect","font-emphasize","font-emphasize-position","font-emphasize-style","font-smooth","font-feature-settings","font-kerning","hyphens","text-align","text-align-last","text-emphasis","text-emphasis-color","text-emphasis-style","text-emphasis-position","text-decoration","text-indent","text-justify","text-outline","text-overflow","text-overflow-ellipsis","text-overflow-mode","text-transform","text-wrap","text-shadow","-webkit-text-size-adjust","letter-spacing","word-break","word-spacing","word-wrap","overflow-wrap","tab-size","white-space","vertical-align","list-style","list-style-position","list-style-type","list-style-image"
+				]
+			},
+			{
+				"emptyLineBefore": "always",
+				"properties": [
+					"color","background","background-color","background-image","background-repeat","background-attachment","background-position","background-position-x","background-position-y","background-clip","background-origin","background-size","filter","border","border-color","border-style","border-width","border-top","border-top-color","border-top-style","border-top-width","border-right","border-right-color","border-right-style","border-right-width","border-bottom","border-bottom-color","border-bottom-style","border-bottom-width","border-left","border-left-color","border-left-style","border-left-width","border-radius","border-top-left-radius","border-top-right-radius","border-bottom-right-radius","border-bottom-left-radius","border-image","border-image-source","border-image-slice","border-image-width","border-image-outset","border-image-repeat","outline","outline-width","outline-style","outline-color","outline-offset","box-shadow","opacity"
+				]
+			},
+			{
+				"emptyLineBefore": "always",
+				"properties": [
+					"pointer-events","touch-action","cursor","visibility","zoom","table-layout","empty-cells","caption-side","border-spacing","border-collapse","content","quotes","counter-reset","counter-increment","resize","user-select","nav-index","nav-up","nav-right","nav-down","nav-left"
+				]
+			},
+			{
+				"emptyLineBefore": "always",
+				"properties": [
+					"transition","transition-delay","transition-timing-function","transition-duration","transition-property","transform","transform-origin","animation","animation-name","animation-duration","animation-play-state","animation-timing-function","animation-delay","animation-iteration-count","animation-direction"
+				]
+			}
+		],
+		"indentation": "tab",
+		"string-quotes": "single",
+		"font-family-name-quotes": "always-unless-keyword",
+		"function-url-quotes": "always",
+		"selector-attribute-quotes": "always",
+		"at-rule-no-vendor-prefix": true,
+		"media-feature-name-no-vendor-prefix": true,
+		"property-no-vendor-prefix": true,
+		"selector-no-vendor-prefix": true,
+		"value-no-vendor-prefix": true,
+		"max-nesting-depth": 3,
+		"declaration-empty-line-before": null
+	}
+}
