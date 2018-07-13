@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Set dev because webpack has too many cooks
 process.env.NODE_ENV = 'production';
@@ -48,8 +49,45 @@ module.exports = {
 							compact: true,
 						}
 					},
+					{
+						test: /\.scss$/,
+						use: [
+							{
+								loader: MiniCssExtractPlugin.loader,
+							},
+							{
+								loader: 'css-loader',
+								options: {
+									// sourceMap: true,
+									importLoaders: 1,
+								},
+							},
+							{
+								loader: 'postcss-loader',
+								options: {
+									ident: 'postcss',
+									plugins: () => [
+										require('autoprefixer')(),
+										require('cssnano')(),
+									],
+								},
+							},
+							{
+								loader: 'sass-loader',
+								options: {
+									// sourceMap: true,
+								},
+							}
+						],
+					},
 				],
 			},
 		],
 	},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: "assets/css/[name].css",
+			chunkFilename: "[id].css"
+		}),
+	],
 }
