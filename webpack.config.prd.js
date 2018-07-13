@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 // Set dev because webpack has too many cooks
 process.env.NODE_ENV = 'production';
@@ -111,4 +111,10 @@ module.exports = {
 			},
 		],
 	},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: "assets/css/[name].css",
+			chunkFilename: "[id].css"
+		}),
+	],
 }

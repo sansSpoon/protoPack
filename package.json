@@ -31,7 +31,7 @@
 		"Chrome >= 45",
 		"Firefox >= 27",
 		"not Edge < 2000",
-		"IE > 6",
+		"not IE < 2000",
 		"iOS >= 7",
 		"Safari >= 7"
 	],
