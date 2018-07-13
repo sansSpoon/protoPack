@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 // Set dev because webpack has too many cooks
 process.env.NODE_ENV = 'development';
@@ -33,7 +34,7 @@ module.exports = {
 						options: {
 							fix: false,
 							cache: false, // true './node_modules/.cache'
-							quiet: false, // Loader will process and report errors only and ignore warnings if this option is set to true
+							quiet: false, // report errors only, ignore warnings
 							emitWarning: false, // Enable for HMR in dev
 							failOnWarning: false,
 							emitError: true,
@@ -53,8 +54,48 @@ module.exports = {
 							cacheDirectory: true,
 						}
 					},
+					{
+						test: /\.scss$/,
+						use: [
+							{
+								loader: 'style-loader',
+							},
+							{
+								loader: 'css-loader',
+								options: {
+									// sourceMap: true,
+									importLoaders: 2,
+								},
+							},
+							{
+								loader: 'postcss-loader',
+								options: {
+									ident: 'postcss',
+									plugins: () => [
+										// require('autoprefixer')(),
+										// require('cssnano')(),
+									],
+								},
+							},
+							{
+								loader: 'sass-loader',
+								options: {
+									// sourceMap: true,
+								},
+							}
+						],
+					},
 				],
 			},
 		],
 	},
+	plugins: [
+		new StyleLintPlugin({
+			configFile: './.stylelintrc.json',
+			context: '_src',
+			files: '**/*.scss', // '**/*.s?(a|c)ss'
+			emitErrors: false,
+			failOnError: false,
+		}),
+	],
 }
